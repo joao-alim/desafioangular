@@ -1,0 +1,24 @@
+/* Centraliza verticalmente o conteúdo se a tela for grande */
+.container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Ajusta a imagem do carro para não estourar o layout */
+img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+/* Um charminho: aumenta o carro levemente ao passar o mouse */
+img:hover {
+    transform: scale(1.05);
+}
+
+h2 {
+    color: #003478; /* Azul Ford */
+    font-weight: bold;
+    margin-bottom: 20px;
+}

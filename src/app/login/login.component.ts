@@ -1,42 +1,27 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-login',
+  standalone: true, 
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  loginForm: FormGroup;
-  errorMessage: string | null = null;
+  user = '';
+  password = '';
+  errorMessage = '';
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-    private router: Router
-  ) {
-    this.loginForm = this.fb.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
+  constructor(private router: Router) {}
 
-  onSubmit(): void {
-    if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
-      
-      this.authService.login(username, password).subscribe({
-        next: (success) => {
-          if (success) {
-            this.router.navigate(['/home']);
-          }
-        },
-        error: (err) => {
-          this.errorMessage = err.message;
-        }
-      });
+  login() {
+    if (this.user === 'admin' && this.password === '123456') {
+      this.router.navigate(['/home']);
+    } else {
+      this.errorMessage = 'Usuário ou senha inválidos';
     }
   }
 }

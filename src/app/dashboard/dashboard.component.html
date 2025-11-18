@@ -1,0 +1,73 @@
+<div class="container mt-4">
+  <h1 class="text-center text-primary my-4">Dashboard FORD</h1>
+
+  <div class="row mb-5">
+    <div class="col-md-3">
+      <div class="card p-3">
+        <label class="mb-2">Veículo</label>
+        <select class="form-select" [ngModel]="selectedVehicle" (ngModelChange)="onVehicleSelect($event)">
+          <option [ngValue]="null" disabled>Selecione um modelo</option>
+          <option *ngFor="let v of vehicles" [ngValue]="v">{{ v.model }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card p-3 text-center">
+        <h5>Total de Vendas</h5>
+        <h3 class="text-info">{{ totalSales }}</h3>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3 text-center">
+        <h5>Conectados</h5>
+        <h3 class="text-info">{{ connectedVehicles }}</h3>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card p-3 text-center">
+        <h5>Update Software</h5>
+        <h3 class="text-info">{{ softwareUpdates }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-6 text-center">
+      <img [src]="vehicleImage" class="img-fluid" alt="Veículo Selecionado" *ngIf="vehicleImage">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="input-group mb-3">
+        <span class="input-group-text">Buscar Código (VIN)</span>
+        <input type="text" class="form-control" [formControl]="searchControl" placeholder="Ex: 2FRHDUYS2Y63NHD22454">
+      </div>
+
+      <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            <th>Código (VIN)</th>
+            <th>Odômetro</th>
+            <th>Nível Combustível</th>
+            <th>Status</th>
+            <th>Lat/Long</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of (filteredVehicleData$ | async)">
+            <td>{{ data.vin }}</td>
+            <td>{{ data.odometer }} km</td>
+            <td>{{ data.fuelLevel }}%</td>
+            <td>{{ data.status }}</td>
+            <td>{{ data.lat }}, {{ data.long }}</td>
+          </tr>
+          <tr *ngIf="!(filteredVehicleData$ | async)?.length">
+            <td colspan="5" class="text-center text-muted">Use o campo acima para buscar um código de veículo.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

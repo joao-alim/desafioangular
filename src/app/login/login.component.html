@@ -1,1 +1,18 @@
-<p>login works!</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <img src="/ranger.png" alt="Ford Ranger" class="img-fluid mb-3">
+      </div>
+      <div class="col-md-4">
+        <h2>Boas-vindas</h2>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Usuário" [(ngModel)]="user">
+        </div>
+        <div class="form-group mt-2">
+          <input type="password" class="form-control" placeholder="Senha" [(ngModel)]="password">
+        </div>
+        <button class="btn btn-primary w-100 mt-3" (click)="login()">Entrar</button>
+        <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+      </div>
+    </div>
+  </div>

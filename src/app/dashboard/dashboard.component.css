@@ -1,0 +1,45 @@
+/* Títulos principais */
+h1 {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Estilo dos cartões de informação (Vendas, Conectados, etc.) */
+.card {
+    border: none;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Sobe um pouquinho ao passar o mouse */
+}
+
+/* Destaque para os números */
+h3.text-info {
+    color: #007bff !important; /* Garante o azul forte */
+    font-weight: bold;
+}
+
+/* Imagem central do veículo selecionado */
+img.img-fluid {
+    max-height: 300px; /* Limita a altura para não ocupar a tela toda */
+    object-fit: contain;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Tabela */
+.table {
+    border-radius: 8px;
+    overflow: hidden; /* Respeita as bordas arredondadas */
+    margin-top: 20px;
+}
+
+.table thead th {
+    background-color: #003478; /* Cabeçalho azul escuro */
+    color: white;
+    border: none;
+}
