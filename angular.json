@@ -57,12 +57,16 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json" // <-- A linha MÁGICA
+          },
           "configurations": {
             "production": {
               "buildTarget": "ProjetoOG:build:production"
             },
             "development": {
-              "buildTarget": "ProjetoOG:build:development"
+              "buildTarget": "ProjetoOG:build:development",
+              "proxyConfig": "proxy.conf.json" // <-- Adicione também na configuração de development para garantir
             }
           },
           "defaultConfiguration": "development"
