@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Para usar *ngIf, *ngFor
-import { RouterLink } from '@angular/router';   // <--- ESSENCIAL PARA O BOTÃO FUNCIONAR!
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink], // <--- ADICIONE RouterLink AQUI
+  imports: [CommonModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

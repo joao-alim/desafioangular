@@ -1,29 +1,15 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable, of, throwError } from 'rxjs';
+import { Usuario } from '../models/usuario.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private router: Router) { }
+  private apiUrl = 'http://localhost:3001';
 
-  login(usuario: string, senha: string): Observable<boolean> {
-    if (usuario === 'admin' && senha === '123456') {
-      localStorage.setItem('user_logged_in', 'true');
-      return of(true);
-    } else {
-      return throwError(() => new Error('Usuário ou senha inválidos'));
-    }
-  }
+  constructor(private http:HttpClient) { }
 
-  logout(): void {
-    localStorage.removeItem('user_logged_in');
-    this.router.navigate(['/login']);
-  }
-
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('user_logged_in');
-  }
-}
+  login (usuari:Pick<Usuario, 'nome' | 'senha')

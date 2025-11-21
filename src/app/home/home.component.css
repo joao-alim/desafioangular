@@ -1,43 +1,34 @@
-/* 1. Configuração do Fundo (Agora com o carro MENOR) */
 .home-container {
     background-image: url('/ranger.png'); 
-    
-    /* MUDANÇA: Reduz o tamanho da imagem para 80% da tela */
     background-size: 80%; 
-    
     background-position: center center; 
     background-repeat: no-repeat;
     background-color: #ffffff; 
-    
-    height: 100vh; /* Mantém a tela inteira */
     width: 100%;
-    
     display: flex;
     flex-direction: column; 
 }
 
-/* 2. Estilo do Header (Para o Logout "Modo Antigo") */
 .app-header {
     display: flex;
-    justify-content: space-between; /* Empurra o logo para a esquerda e o Sair para a direita */
+    justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem; 
-    background-color: #f8f9fa; /* Fundo cinza claro */
+    background-color: #f8f9fa;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .logo-text {
     font-weight: bold;
-    color: #003478; /* Azul Ford */
+    color: #003478;
     font-size: 1.5rem;
 }
 
-/* Estilo do Botão SAIR (Modo Antigo) */
 .logout-link {
     color: #dc3545; 
     text-decoration: none; 
     padding: 0.5rem 1rem;
-    border: 1px solid #dc3545; /* Borda simples e visível */
+    border: 1px solid #dc3545;
     border-radius: 4px;
     transition: background-color 0.2s;
 }
@@ -47,16 +38,14 @@
     color: white;
 }
 
-/* 3. Área do Conteúdo (Empurra o cartão para a esquerda, sem o carro por cima) */
 .content-area {
     flex: 1; 
     display: flex;
-    justify-content: flex-start; /* Alinha o cartão à esquerda */
+    justify-content: flex-start;
     align-items: center; 
-    padding-left: 10%; /* Espaçamento da lateral */
+    padding-left: 10%;
 }
 
-/* 4. Estilo do Cartão */
 .welcome-card {
     width: 100%;
     max-width: 400px; 
