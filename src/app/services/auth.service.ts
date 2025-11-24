@@ -12,4 +12,7 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
 
-  login (usuari:Pick<Usuario, 'nome' | 'senha')
+  login (usuario:Pick<Usuario, 'nome' | 'senha'>):Observable<Usuario>{
+    return this.http.post<Usuario>(`${this.apiUrl}/login`,usuario);
+  }
+}
