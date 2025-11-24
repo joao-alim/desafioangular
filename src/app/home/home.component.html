@@ -1,9 +1,38 @@
 <div class="home-container">
   
   <header class="app-header">
+    <button class="hamburger-btn" (click)="toggleMenu()" [class.active]="menuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <span class="logo-text">FORD</span>
     <a routerLink="/login" class="logout-link">Sair</a>
   </header>
+
+  <nav class="side-menu" [class.open]="menuOpen">
+    <div class="menu-header">
+      <h3>Menu</h3>
+      <button class="close-btn" (click)="toggleMenu()">×</button>
+    </div>
+    <ul class="menu-list">
+      <li>
+        <a routerLink="/home" (click)="toggleMenu()">
+          <i class="icon">🏠</i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/dashboard" (click)="toggleMenu()">
+          <i class="icon">📊</i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="overlay" [class.show]="menuOpen" (click)="toggleMenu()"></div>
 
   <div class="content-area">
     <div class="card welcome-card">
