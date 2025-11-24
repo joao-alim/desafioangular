@@ -1,12 +1,14 @@
 .home-container {
     background-image: url('/ranger.png'); 
-    background-size: 80%; 
-    background-position: center center; 
+    background-size: 100%;
+    background-position: right center; 
     background-repeat: no-repeat;
-    background-color: #ffffff; 
+    background-color: #f8f9fa; 
+    min-height: 100vh;
     width: 100%;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
+    position: relative;
 }
 
 .app-header {
@@ -14,44 +16,299 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem; 
-    background-color: #f8f9fa;
+    background-color: rgba(248, 249, 250, 0.95);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1001;
+}
+
+.hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
+}
+
+.hamburger-btn span {
+    width: 100%;
+    height: 3px;
+    background-color: #003478;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
 }
 
 .logo-text {
     font-weight: bold;
     color: #003478;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .logout-link {
     color: #dc3545; 
     text-decoration: none; 
-    padding: 0.5rem 1rem;
-    border: 1px solid #dc3545;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #dc3545;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .logout-link:hover {
     background-color: #dc3545;
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    z-index: 1002;
+    overflow-y: auto;
+}
+
+.side-menu.open {
+    left: 0;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #003478;
+    color: white;
+}
+
+.menu-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-list li {
+    border-bottom: 1px solid #e9ecef;
+}
+
+.menu-list li a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.menu-list li a:hover {
+    background-color: #f8f9fa;
+    color: #003478;
+    padding-left: 2rem;
+}
+
+.menu-list li a .icon {
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+}
+
+.menu-list li a span {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.overlay.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 .content-area {
     flex: 1; 
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center; 
-    padding-left: 10%;
+    padding: 3rem 2rem;
 }
 
 .welcome-card {
     width: 100%;
-    max-width: 400px; 
-    border: 1px solid rgba(0,0,0,0.1); 
-    border-radius: 8px; 
-    background-color: rgba(255, 255, 255, 0.85); 
-    backdrop-filter: blur(5px); 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+    max-width: 420px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem;
+    margin-right: auto;
+    margin-left: 5%;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card-title {
+    color: #003478;
+    font-size: 1.75rem;
+}
+
+.card-text {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.btn-primary {
+    background-color: #003478;
+    border: none;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #00509e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 52, 120, 0.3);
+}
+
+@media (max-width: 1400px) {
+    .home-container {
+        background-size: 45%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .home-container {
+        background-size: 55%;
+        background-position: center right;
+    }
+    
+    .welcome-card {
+        margin-left: 3%;
+    }
+}
+
+@media (max-width: 992px) {
+    .home-container {
+        background-size: 65%;
+        background-position: bottom right;
+    }
+    
+    .content-area {
+        align-items: flex-start;
+        padding-top: 5rem;
+    }
+    
+    .welcome-card {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        background-image: none;
+        background-color: #f8f9fa;
+    }
+    
+    .content-area {
+        justify-content: center;
+        padding: 2rem;
+    }
+    
+    .welcome-card {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    .side-menu {
+        width: 250px;
+        left: -250px;
+    }
+}
+
+@media (max-width: 576px) {
+    .app-header {
+        padding: 1rem;
+    }
+    
+    .card-body {
+        padding: 1.5rem;
+    }
+    
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .logo-text {
+        font-size: 1.3rem;
+    }
+
+    .side-menu {
+        width: 80%;
+        left: -80%;
+    }
 }
